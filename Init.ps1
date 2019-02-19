@@ -19,6 +19,7 @@ Invoke-Command -Credential $credentials -ComputerName $env:COMPUTERNAME -ScriptB
     # Download Gephi Installer
     $tempPath = [IO.Path]::GetTempPath()
     $tempDir = Join-Path -Path $tempPath -ChildPath 'GephiDownload'
+    $null = New-Item -Path $tempDir -ItemType Directory -Force
     $tempExe = Join-Path -Path $tempDir -ChildPath 'gephi.exe'
     $invokeWebReqArgs = @{
         Uri     = 'https://github.com/gephi/gephi/releases/download/v0.9.2/gephi-0.9.2-windows.exe'
