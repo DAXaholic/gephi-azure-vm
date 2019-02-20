@@ -12,7 +12,7 @@ Enable-PSRemoting -Force
 Invoke-Command -Credential $credentials -ComputerName $env:COMPUTERNAME -ScriptBlock {
 
     # Install Chocolatey
-    Invoke-Expression (Invoke-WebRequest 'https://chocolatey.org/install.ps1').Content
+    Invoke-Expression (Invoke-WebRequest 'https://chocolatey.org/install.ps1' -UseBasicParsing).Content
 
     # Install Java
     choco.exe install javaruntime -y
@@ -25,6 +25,7 @@ Invoke-Command -Credential $credentials -ComputerName $env:COMPUTERNAME -ScriptB
     $invokeWebReqArgs = @{
         Uri     = 'https://github.com/gephi/gephi/releases/download/v0.9.2/gephi-0.9.2-windows.exe'
         OutFile = $tempExe
+        UseBasicParsing = $true
     }
     Invoke-WebRequest @invokeWebReqArgs
 
