@@ -8,6 +8,7 @@ $credentials = [System.Management.Automation.PSCredential]::new(
     $VmAdminUserName,
     $adminPasswordSecStr)
 
+Enable-PSRemoting -Force
 Invoke-Command -Credential $credentials -ComputerName $env:COMPUTERNAME -ScriptBlock {
 
     # Install Chocolatey
